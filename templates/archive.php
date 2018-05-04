@@ -1,7 +1,7 @@
 <template id="archive"> 
 <div>
     <header-component></header-component>
-    <div class="container">
+    <div class="container clear">
     
     
     <div class="row">       

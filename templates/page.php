@@ -1,7 +1,7 @@
 <template id="page">
 <div>
     <header-component></header-component>
-    <div class="container">
+    <div class="container clear">
 
         <div class="row"> 
             <div class="col-lg-8">

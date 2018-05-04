@@ -9,6 +9,14 @@ header {
     min-height: 50px;
     z-index: 5;
     padding-top: 5px;
+    top:0;
+}
+.clear {
+  margin-top:75px;
+  background-color: #fff;
+  border-radius: 2px;
+  border: 1px solid #eee;
+  padding: 10px;
 }
 a.logo {
     position: relative;
@@ -168,6 +176,160 @@ input[type="radio"] {
 
 /* Search End */
 
+/* Sidebar */
+.seasonswidget {
+  margin: auto;
+  overflow: auto;
+  height: 150px;
+}
+
+.seasonswidget::-webkit-scrollbar {
+  background: #f1f1f1;
+  width: 8px;
+}
+
+.seasonswidget::-webkit-scrollbar-thumb {
+  background: #ccc;
+}
+
+.seasonswidget ul {
+  overflow: hidden;
+  list-style: none;
+  padding:0;
+}
+
+.seasonswidget ul li {
+  float: left;
+  width: 33%;
+  text-align: center;
+}
+
+.seasonswidget ul li a {
+  display: block;
+  margin: 3px;
+  padding: 5px;
+  border-radius: 3px;
+  background: #ffa683;
+  color: #fff;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  transition: 0.2s ease-in-out;
+}
+
+.seasonswidget ul li a:hover {
+  text-decoration: none;
+  background: #83c5ff;
+  transition: 0.2s ease-in-out;
+}
+
+#sidebar {
+  float: right;
+  width: 29%;
+}
+
+.section {
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.section h3 {
+  font-size: 12px;
+  color: #fff;
+  padding: 8px;
+  font-weight: 600;
+  background: #0081f2;
+  text-transform: uppercase;
+  border-left: 8px solid #6db7f7;
+  border-right: 8px solid #6db7f7;
+  text-align: center;
+}
+
+.area {
+  background: transparent;
+}
+
+#sidebar .section .textwidget {
+  padding-top: 0px;
+  line-height: normal;
+}
+
+#sidetab {
+  float: right;
+  width: 285px;
+}
+
+.aduh {
+  margin: auto;
+  padding: 5px 0px;
+  overflow: hidden;
+}
+
+.polarpost {
+  margin-bottom: 5px;
+  padding: 5px 0;
+  overflow: hidden;
+  border-bottom: 1px dashed #f4f4f4;
+}
+
+
+.polarco {
+  overflow: hidden;
+  padding: 0px 3px;
+}
+
+.polargambar {
+  float: left;
+  margin: 0;
+  height: auto;
+  width: auto;
+  max-width: 25%;
+}
+
+.polargambar img {
+  width: 100%;
+  height: auto;
+}
+
+.polarjdl {
+  margin-bottom: 7px;
+  margin-top: 2px;
+  color: #006798;
+  padding: 0px 5px;
+}
+
+.polarjdl h2 {
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  color: #198ef3;
+  width: 210px;
+}
+
+.polarjdl a {
+  color: #198ef3;
+}
+
+.polarjdl a:hover {
+  text-decoration: underline;
+}
+
+.genreser {
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  color: #777;
+  padding: 0 5px;
+}
+
+.genreser a {
+  color: #777;
+}
+/* Sidebar End */
 
 .main-header {
   border-bottom: 1px solid #ebebeb;

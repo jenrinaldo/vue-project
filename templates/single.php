@@ -1,7 +1,7 @@
 <template id="single">
 <div>
     <header-component></header-component>
-    <div class="container">
+    <div class="container clear">
 
         <div class="row single">
             <div class="col-lg-12">
