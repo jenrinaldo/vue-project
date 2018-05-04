@@ -16,14 +16,9 @@
 			<h3>
 				<span class="fas fa-cog"></span> Recent Anime TV
 			</h3>
-			<?php $query = new WP_Query( array( 'posts_per_page' => 7,'tax_query' => array ( array ( 'taxonomy' => 'tipe', 'terms' => 'tv', 'field' => 'slug' ) ) ) ); while($query->have_posts()) : $query->the_post(); ?>
-			<li>
-				<a href="
-					<?php the_permalink(); ?>">
-					<?php if (( $meta = get_post_meta( get_the_ID(), 'title', true ))) { echo $meta; }else { echo the_title();} ?>
-				</a>
+			<li v-for="tvs in tv">
+            <router-link v-bind:to="{ name: 'post', params: { slug: tvs.slug }}" v-html="tvs.title.rendered"></router>
 			</li>
-			<?php endwhile; ?>
 		</div>
 		<!-- End Footer Widget -->
 		<!-- Footer Widget -->
@@ -31,14 +26,9 @@
 			<h3>
 				<span class="fas fa-cog"></span> Recent Anime Movie
 			</h3>
-			<?php $query = new WP_Query( array( 'posts_per_page' => 7,'tax_query' => array ( array ( 'taxonomy' => 'tipe', 'terms' => 'movie', 'field' => 'slug' ) ) ) ); while($query->have_posts()) : $query->the_post(); ?>
-			<li>
-				<a href="
-					<?php the_permalink(); ?>">
-					<?php if (( $meta = get_post_meta( get_the_ID(), 'title', true ))) { echo $meta; }else { echo the_title();} ?>
-				</a>
+            <li v-for="movies in movie">
+            <router-link v-bind:to="{ name: 'post', params: { slug: movies.slug }}" v-html="movies.title.rendered"></router>
 			</li>
-			<?php endwhile; ?>
 		</div>
 		<!-- End Footer Widget -->
 		<!-- Footer Widget -->
@@ -46,14 +36,9 @@
 			<h3>
 				<span class="fas fa-cog"></span> Recent Anime OVA
 			</h3>
-			<?php $query = new WP_Query( array( 'posts_per_page' => 7,'tax_query' => array ( array ( 'taxonomy' => 'tipe', 'terms' => 'ova', 'field' => 'slug' ) ) ) ); while($query->have_posts()) : $query->the_post(); ?>
-			<li>
-				<a href="
-					<?php the_permalink(); ?>">
-					<?php if (( $meta = get_post_meta( get_the_ID(), 'title', true ))) { echo $meta; }else { echo the_title();} ?>
-				</a>
+            <li v-for="ovas in ova">
+            <router-link v-bind:to="{ name: 'post', params: { slug: ovas.slug }}" v-html="ovas.title.rendered"></router>
 			</li>
-			<?php endwhile; ?>
 		</div>
 		<!-- End Footer Widget -->
     </div>

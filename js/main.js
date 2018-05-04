@@ -5,7 +5,7 @@ Vue.config.devtools = true;
 Vue.component('the-loop',{
     template : "#the-loop", 
     props: ['posts', 'pagers']   
-})
+});
 
 Vue.component('sidebar',{
     template : "#sidebar",
@@ -14,7 +14,7 @@ Vue.component('sidebar',{
             genre : [],
             tipe : [],
             season : []
-        }
+        };
     }, 
     mounted : function(){    
         var _this = this;    
@@ -41,22 +41,54 @@ Vue.component('sidebar',{
             });
     }
 
-})
+});
 
 Vue.component('footer-component',{
-    template : "#footer"
-})
+    template : "#footer",
+    data : function(){
+        return {
+            tv : [],
+            movie : [],
+            ova : []
+        };
+    }, 
+    mounted : function(){    
+        var _this = this;    
+        axios.get('/wp-json/wp/v2/posts/?tipes=movie&filter[date_query][column]=post_date_gmt')
+            .then(function (response) {     
+                _this.movie = response.data;
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+            axios.get('/wp-json/wp/v2/posts/?tipes=tv&filter[date_query][column]=post_date_gmt')
+            .then(function (response) {     
+                _this.tv = response.data;
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+            axios.get('/wp-json/wp/v2/posts/?tipes=ova&filter[date_query][column]=post_date_gmt')
+            .then(function (response) {     
+                _this.ova = response.data;
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+    
+});
 
 Vue.component('nopost',{
     template : "#nopost"
-})
+});
 
 Vue.component('header-component',{  
     template : "#header", 
     data : function(){
         return {
             pages : []
-        }
+        };
     }, 
     mounted : function(){    
         var _this = this;    
@@ -68,7 +100,7 @@ Vue.component('header-component',{
                 console.log(error);
             });
     }
-})
+});
 
 Vue.component('search-form',{
     template : "#search-form",
@@ -86,7 +118,7 @@ Vue.component('search-form',{
                 ? this.$route.query.term : ""; 
         return {
             searchTerm : searchTerm          
-        }
+        };
     }, 
     watch : {
         '$route' : function (to, from) {    
@@ -95,7 +127,7 @@ Vue.component('search-form',{
             this.searchTerm = searchTerm;            
         }
     }
-})
+});
 
 Vue.component('comment-form',{  
     template : "#comment-form", 
@@ -146,45 +178,45 @@ Vue.component('comment-form',{
             contentBlured : false,
             valid : false, 
             submitted : false
-        }
+        };
     }
-})
+});
 
 Vue.component('comments',{
     template : "#comments", 
     props : ['comments']
-})
+});
 
 //components with routes
 
 const PageNotFound = Vue.component('pagenotfound',{  
     template : "#pagenotfound"
-})
+});
 
 const Home = Vue.component('home', {
     template: '#home', 
     props: ['posts', 'pagers','sidebar']
-})
+});
 
 const Single = Vue.component('single', {
     template: '#single', 
     props: ['post','comments','sidebar']   
-})
+});
 
 const Page = Vue.component('page', {
     template: '#page', 
     props: ['post','sidebar']   
-})
+});
 
 const Archive = Vue.component('archive', {
     template: '#archive', 
     props: ['posts', 'pagers','sidebar']
-})
+});
 
 const Search = Vue.component('search', {
     template: '#search', 
     props: ['posts', 'pagers','sidebar']
-})
+});
 
 // 2. Define some routes
 // Each route should map to a component. The "component" can
@@ -206,7 +238,7 @@ const routes = [
   { path: '/blog/', name : 'blog', component: Archive }, 
   { path: '/search/', name : 'search', component: Search }, 
   { path: "*", component: PageNotFound }
-]
+];
 
 // 3. Create the router instance and pass the `routes` option
 // You can pass in additional options here, but let's
@@ -214,7 +246,7 @@ const routes = [
 const router = new VueRouter({
   routes : routes, 
   mode: 'history'
-})
+});
 
 // 4. Create and mount the root instance.
 // Make sure to inject the router with the router option to make the
@@ -247,7 +279,7 @@ const app = new Vue({
     methods : {
         getBloginfo : function(){
             var _this = this;
-            var urlStr = "/wp-json/"
+            var urlStr = "/wp-json/";
             axios.get(urlStr)
                 .then(function (response) {     
                     _this.bloginfo.name = response.data.name;
@@ -370,7 +402,7 @@ const app = new Vue({
             return true;
         }
     }
-}).$mount('#app')
+}).$mount('#app');
 
 // Now the app has started!
  
