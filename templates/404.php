@@ -8,6 +8,7 @@
                 Page Not Found!
             </div>
         </div>
+        <sidebar></sidebar>
     </div>
     </div><!--end container-->
     <footer-component></footer-component>

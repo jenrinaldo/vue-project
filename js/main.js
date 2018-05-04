@@ -8,7 +8,39 @@ Vue.component('the-loop',{
 })
 
 Vue.component('sidebar',{
-    template : "#sidebar"
+    template : "#sidebar",
+    data : function(){
+        return {
+            genre : [],
+            tipe : [],
+            season : []
+        }
+    }, 
+    mounted : function(){    
+        var _this = this;    
+        axios.get('/wp-json/wp/v2/genre')
+            .then(function (response) {     
+                _this.genre = response.data;
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+            axios.get('/wp-json/wp/v2/tipe')
+            .then(function (response) {     
+                _this.tipe = response.data;
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+            axios.get('/wp-json/wp/v2/season')
+            .then(function (response) {     
+                _this.season = response.data;
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
 })
 
 Vue.component('footer-component',{
@@ -131,27 +163,27 @@ const PageNotFound = Vue.component('pagenotfound',{
 
 const Home = Vue.component('home', {
     template: '#home', 
-    props: ['posts', 'pagers']
+    props: ['posts', 'pagers','sidebar']
 })
 
 const Single = Vue.component('single', {
     template: '#single', 
-    props: ['post','comments']   
+    props: ['post','comments','sidebar']   
 })
 
 const Page = Vue.component('page', {
     template: '#page', 
-    props: ['post']   
+    props: ['post','sidebar']   
 })
 
 const Archive = Vue.component('archive', {
     template: '#archive', 
-    props: ['posts', 'pagers']
+    props: ['posts', 'pagers','sidebar']
 })
 
 const Search = Vue.component('search', {
     template: '#search', 
-    props: ['posts', 'pagers']
+    props: ['posts', 'pagers','sidebar']
 })
 
 // 2. Define some routes
@@ -166,6 +198,11 @@ const routes = [
   { path: '/page/:slug', component: Page, name : 'page' },
   { path: '/category/:category', name : 'category', component: Archive },  
   { path: '/tag/:tag', name : 'tag', component: Archive }, 
+  { path: '/genre/:genre', name : 'genre', component: Archive },
+  { path: '/tipe/:tipe', name : 'tipe', component: Archive }, 
+  { path: '/series/:series', name : 'series', component: Archive }, 
+  { path: '/season/:season', name : 'season', component: Archive }, 
+  { path: '/producer/:producer', name : 'producer', component: Archive }, 
   { path: '/blog/', name : 'blog', component: Archive }, 
   { path: '/search/', name : 'search', component: Search }, 
   { path: "*", component: PageNotFound }
@@ -193,7 +230,10 @@ const app = new Vue({
         "posts" : [], 
         "comments" : [],
         "post" : {}, 
-        "pagers" : []  
+        "pagers" : [] ,
+        "genre" : {},
+        "tipe" : {},
+        "season" : {} 
     }, 
     created : function(){     
         this.getBloginfo();   
@@ -285,6 +325,16 @@ const app = new Vue({
                     urlStr += '&filter[category_name]='+_this.$route.params.category; 
                 }else if(_this.$route.name == 'tag'){
                     urlStr += '&filter[tag]='+_this.$route.params.tag;                     
+                }else if(_this.$route.name == 'genre'){
+                    urlStr += '&filter[genre]='+_this.$route.params.genre;                     
+                }else if(_this.$route.name == 'tipe'){
+                    urlStr += '&filter[tipe]='+_this.$route.params.tipe;                     
+                }else if(_this.$route.name == 'series'){
+                    urlStr += '&filter[series]='+_this.$route.params.series;                     
+                }else if(_this.$route.name == 'producer'){
+                    urlStr += '&filter[producer]='+_this.$route.params.producer;                     
+                }else if(_this.$route.name == 'season'){
+                    urlStr += '&filter[season]='+_this.$route.params.season;                     
                 }
             }           
             if(!_this.isEmpty(_this.$route.query)){

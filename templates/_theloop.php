@@ -9,13 +9,20 @@
                   {{post.title.rendered}}
               </router>
           </div>  
-          <div class="meta">     
-            Categories: 
-            <router-link 
-              v-for="(cat, index) in post.cats"
-              v-bind:to="{name:'category', params: { category: cat.slug }}">
-                {{cat.name}}<span v-if="index < post.cats.length - 1">,&nbsp;</span>
-            </router-link>
+          <div class="meta"> Type : 
+            <ul id="example-1">
+              <li  v-for="(cat, index) in post.cats">
+              <router-link v-bind:to="{name:'tipe', params: { tipe: cat.slug }}">{{cat.name}}<span v-if="index < post.cats.length - 1">,&nbsp;</span></router-link>
+              </li>
+            </ul>
+            </div>
+            <div class="meta">     
+            Categories : 
+            <ul id="example-1">
+              <li  v-for="(cat, index) in post.gen">
+              <router-link v-bind:to="{name:'genre', params: { genre: cat.slug }}">{{cat.name}}<span v-if="index < post.gen.length - 1">,&nbsp;</span></router-link>
+              </li>
+            </ul>
             </div>
           <div class="excerpt" v-html="post.excerpt.rendered"></div>
       </li>

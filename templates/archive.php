@@ -6,7 +6,7 @@
     
     <div class="row">       
         <div class="col-lg-8">
-            <h1 class="main-title">{{$route.name}}</h1>
+            <h1 class="main-title">{{$route.params[$route.name]}}</h1>
             <the-loop 
                 v-bind:posts="posts" 
                 v-bind:pagers="pagers">

@@ -4,7 +4,7 @@
     <div class="container">
 
         <div class="row single">
-            <div class="col-lg-8 content-area">
+            <div class="col-lg-12">
                 <div v-if="post[0]">
                     <h1 class="post-title">{{post[0].title.rendered}}</h1>
                     <div class="content" v-html="post[0].content.rendered"></div>

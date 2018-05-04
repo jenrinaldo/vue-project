@@ -86,8 +86,10 @@ function prepare_rest($data,$post,$request){
 
   
   //Categories
-  $cats = get_the_category($post->ID);
+  $cats = get_the_terms($post->ID,'tipe');
   $_data['cats'] = $cats;
+  $gen = get_the_terms($post->ID,'genre');
+  $_data['gen'] = $gen;
 
 
 

@@ -1,8 +1,9 @@
 <template id="header">
         <header>      
+        <div class="container">
             <div class="container-fluid top-nav">
-                <div class="container">
                 <div class="row">
+                    <router-link class="logo" to="/">{{this.$root.bloginfo.name}}</router-link>
                 <nav class="nav">
                     <router-link class="nav-link" v-bind:to="{path:'/'}" >Home</router-link>
                     <router-link class="nav-link" v-bind:to="{path:'/blog/',name:'blog'}" >Blog</router-link>
@@ -13,22 +14,13 @@
                             {{page.title.rendered}}
                     </router-link>
                 </nav>
+                <div class="search"> 
+                    <input class="search_box" type="checkbox" id="search_box"> 
+                    <label class="icon-search" for="search_box"><i class="fas fa-search"></i></label>
+                    <search-form></search-form>
                 </div>
                 </div>
-            </div>
-            <div class="container-fluid main-header">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <router-link class="blogname" to="/">{{this.$root.bloginfo.name}}</router-link>
-                            <p>{{this.$root.bloginfo.description}}</p>
-                        </div>
-                        <div class="col-lg-2"></div>
-                        <div class="col-lg-2 search-wrapper">
-                            <search-form></search-form>
-                        </div>
-                    </div> 
-                </div>
-            </div>             
+            </div>     
+</div>    
         </header>
 </template>

@@ -1,8 +1,173 @@
-.top-nav {
-  background-color: #ebebeb;
-  color: #000;
-  padding-top: 5px;
-  padding-bottom: 5px; }
+header {
+    background-color: #ff0052;
+    background: -webkit-linear-gradient(right, #ff0052, #4b134f);
+    background: -o-linear-gradient(right, #ff0052, #4b134f);
+    background: -moz-linear-gradient(right, #ff0052, #4b134f);
+    background: linear-gradient(right, #ff0052, #4b134f);
+    position: fixed;
+    width: 100%;
+    min-height: 50px;
+    z-index: 5;
+    padding-top: 5px;
+}
+a.logo {
+    position: relative;
+    text-transform: uppercase;
+    float: left;
+    top: 5px;
+    margin: 0px 0px 0 10px;
+    max-width: 170px;
+    width: auto;
+    font-size: 19px;
+    line-height: inherit;
+    font-weight: 900;
+    font-family: "Roboto Condensed", Helvetica, sans-serif;
+    color: #f9f9f9;
+    text-decoration: none;
+}
+a {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Ubuntu, Arial, sans-serif;
+    text-decoration: none;
+    transition: 0.2s linear;
+    -moz-transition: 0.2s linear;
+    -webkit-transition: 0.2s linear;
+}
+/* Search */
+
+.search {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  min-height: 25px;
+  float: right;
+  padding: 5px;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  margin: 0px 0 0;
+  margin-top: 1px;
+  line-height: normal;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.search_box {
+  visibility: hidden;
+}
+
+[class^="icon-"] {
+  background: #b7053f;
+  color: #fff;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 6px 7px 7px;
+  font-size: 16px;
+  text-shadow: 1px 1px 2px #21638f;
+  box-shadow: inset 0px 0px 0px #21638f;
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  cursor: pointer;
+  z-index: 10;
+  position: relative;
+}
+
+.search_box:checked ~ .search_form {
+  width: 220px;
+  height: 32px;
+  padding: 5px;
+  top: 50px;
+  transition: height 0.2s ease-out, top 0.2s ease-out, padding 0.2s ease-out,
+    0.3s width ease-out 0.2s;
+  -webkit-transition: height 0.2s ease-out, top 0.2s ease-out,
+    padding 0.2s ease-out, 0.3s width ease-out 0.2s;
+  right: 10px;
+}
+
+.search_form {
+  background: #5dade2;
+  position: absolute;
+  z-index: 0;
+  padding: 0px 5px;
+  right: 0;
+  top: 15px;
+  overflow: hidden;
+  border-radius: 2px;
+  width: 20px;
+  height: 0px;
+  transition: height 0.2s ease-out 0.5s, top 0.2s ease-out 0.5s,
+    padding 0.2s ease-out 0.5s, width 0.3s ease-out 0.2s;
+  -webkit-transition: height 0.2s ease-out 0.5s, top 0.2s ease-out 0.5s,
+    padding 0.2s ease-out 0.5s, width 0.3s ease-out 0.2s;
+}
+
+.search_box:checked ~ .search_form form {
+  opacity: 1;
+  transition: 0.3s all ease-out 0.5s;
+  -webkit-transition: 0.3s all ease-out 0.5s;
+}
+
+.search_form form {
+  opacity: 0;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+}
+
+.search_form input[type="text"] {
+  border-radius: 2px 0 0 2px;
+  width: 80%;
+  margin: -4px 0 0px -4px;
+  min-height: 30px;
+  float: left;
+  overflow: hidden;
+}
+
+.search_form input {
+  background: #fff;
+  border: none;
+}
+
+.search_form input[type="submit"] {
+  border-radius: 0 2px 2px 0;
+  text-transform: uppercase;
+  font-size: 11px;
+  min-height: 30px;
+  margin: -4px 0px 0px 0;
+  cursor: pointer;
+  float: right;
+  width: 20%;
+  display: block;
+}
+
+.searchsubmit {
+  float: right;
+  display: block;
+  min-height: 26px;
+  width: auto;
+  margin: -2px -2px;
+  background: transparent;
+  border: none;
+}
+
+.search_form input {
+  background: #fff;
+  border: none;
+  float: left;
+  display: block;
+  min-height: 26px;
+  margin: -2px -2px;
+  padding: 0;
+  width: 85%;
+}
+
+/* Search End */
+
 
 .main-header {
   border-bottom: 1px solid #ebebeb;

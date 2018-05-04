@@ -4,7 +4,7 @@
     <div class="container">
 
         <div class="row"> 
-            <div class="col-lg-12">
+            <div class="col-lg-8">
                 <div v-if="post[0]">
                     <h1>{{post[0].title.rendered}}</h1>
                     <div class="content" v-html="post[0].content.rendered"></div>
@@ -13,6 +13,7 @@
                     <nopost></nopost>
                 </div>
             </div><!--end col-lg-12-->
+            <sidebar></sidebar>
         </div><!--end row-->
 
     </div><!--end container-->
