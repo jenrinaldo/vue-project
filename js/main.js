@@ -318,7 +318,7 @@ const app = new Vue({
         }, 
         fetchPosts : function(){      
             var _this = this;    
-            var urlStr = '/wp-json/wp/v2/posts?';
+            var urlStr = '/wp-json/wp/v2/posts?_embed';
             //CATEGORY FILTER
             if(!_this.isEmpty(_this.$route.params)){                
                 if(_this.$route.name == 'category'){                    

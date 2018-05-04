@@ -1,30 +1,40 @@
 <template id="the-loop">
-  <div><!--div wrapper-->
     <div v-if="posts.length > 0">
     <!--loop starts here-->
     <ul class="the-loop">
-      <li v-for="post in posts">
-          <div class="title">
-              <router-link v-bind:to="{ name: 'post', params: { slug: post.slug }}">
-                  {{post.title.rendered}}
-              </router>
-          </div>  
-          <div class="meta"> Type : 
-            <ul id="example-1">
-              <li  v-for="(cat, index) in post.cats">
-              <router-link v-bind:to="{name:'tipe', params: { tipe: cat.slug }}">{{cat.name}}<span v-if="index < post.cats.length - 1">,&nbsp;</span></router-link>
-              </li>
-            </ul>
-            </div>
-            <div class="meta">     
-            Categories : 
-            <ul id="example-1">
-              <li  v-for="(cat, index) in post.gen">
-              <router-link v-bind:to="{name:'genre', params: { genre: cat.slug }}">{{cat.name}}<span v-if="index < post.gen.length - 1">,&nbsp;</span></router-link>
-              </li>
-            </ul>
-            </div>
-          <div class="excerpt" v-html="post.excerpt.rendered"></div>
+      <li v-for="post in posts" class="list">
+      <div class="grid-thumb">
+        <router-link v-bind:to="{ name: 'post', params: { slug: post.slug }}">
+        <div class="grid-thumbz">
+            <div class="darken"></div>
+            <img :src="post._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url">
+            <svg viewBox="0 0 24 24"><path d="M8,5.14V19.14L19,12.14L8,5.14Z"></path></svg>
+        </div>
+        </router>
+        </div>
+        <div class="text">
+          <router-link class="judul" v-bind:to="{ name: 'post', params: { slug: post.slug }}">
+            <h2 class='grid-tl' v-html="post.title.rendered"> </h2>
+          </router>
+        </div>
+        <div class="info">
+          <ul>
+            <li><span class="fas fa-calendar-alt"></span> Date : 	<?php echo get_the_time('d F Y', $post->ID); ?></li>
+            <li><span class="fas fa-comments"></span> Comment  : 	
+	    		<?php comments_number( __( '0', 'blank' ), __( '1', 'blank' ), __( '%', 'blank' ), 'comments-link', __('-', 'blank')); ?></li>
+            <li class="category" ><span class="fas fa-tags"></span> Category : 
+              <router-link v-for="(cat, index) in post.genres" v-bind:to="{name:'genre', params: { genre: cat.slug, name: cat.name }}">{{cat.name}}<span v-if="index < post.genres.length - 1">,&nbsp;</span></router-link>
+            </li>
+		    <li class="status" >
+				    <span class="fas fa-info-circle"></span> Status : {{post.meta_box.jensan_status}}	
+		    </li>
+		    <li class="series">
+				    <span class="fas fa-th-list"></span> Series : 	 
+            <router-link v-for="(cat, index) in post.seri" v-bind:to="{name:'series', params: { series: cat.slug, name: cat.name }}">{{cat.name}}<span v-if="index < post.seri.length - 1">,&nbsp;</span></router-link>
+		    </li>
+        <li class="statusBD" v-if="post.meta_box.jensan_bd == 1"><span>BD</span></li>
+        </ul>
+    </div>
       </li>
     </ul>
     <!--the loop ends-->
@@ -42,6 +52,5 @@
     <div v-else>
       <nopost></nopost>
     </div>
-  </div><!--end div wrapper-->
 
 </template>

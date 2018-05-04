@@ -86,10 +86,12 @@ function prepare_rest($data,$post,$request){
 
   
   //Categories
-  $cats = get_the_terms($post->ID,'tipe');
-  $_data['cats'] = $cats;
-  $gen = get_the_terms($post->ID,'genre');
-  $_data['gen'] = $gen;
+  $tipes = get_the_terms($post->ID,'tipe');
+  $genres = get_the_terms($post->ID,'genre');
+  $seri = get_the_terms($post->ID,'series');
+  $_data['tipes'] = $tipes;
+  $_data['genres'] = $genres;
+  $_data['seri'] = $seri;
 
 
 

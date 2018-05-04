@@ -8,7 +8,9 @@
 
         <div class="row single">
             <div class="col-lg-8">
-            <h1 class="main-title">Search Results</h1>
+            <div class="rvads">
+                    <h1><span>Search Results</span></h1>
+                </div>  
                 <the-loop 
                     v-bind:posts="posts" 
                     v-bind:pagers="pagers">

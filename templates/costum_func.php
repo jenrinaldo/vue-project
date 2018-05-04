@@ -15,7 +15,7 @@ function MyAnimeList_API_Add_Meta_Box(){
 }
 
 function jensan_meta_box( $meta_boxes ) {
-	$prefix = 'jensan-';
+	$prefix = 'jensan_';
 
 	$meta_boxes[] = array(
 		'id' => 'jensan-metabox',

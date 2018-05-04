@@ -4,11 +4,17 @@
     <header-component></header-component>   
     <div class="container clear">
 
-    <div class="row">
-        <div class="col-lg-8">
-            <h5 class="latest-title">Latest from the <router-link v-bind:to="{path:'/blog/',name:'blog'}" >Blog</router-link></h5> 
-            <the-loop v-bind:posts="posts" v-bind:pagers="pagers"></the-loop>      
+    <div class="wrapper">
+        <div class="menu-wrap">
+    <div class="rseries">
+        <div class="rvads">
+            <h1><span>Latest Update</span><span><a href="/anime-list/">View More</a></span></h1>
         </div>
+        <div itemtype="//schema.org/Blog">
+                <the-loop v-bind:posts="posts" v-bind:pagers="pagers"></the-loop>     
+        </div>
+    </div>
+</div>
         <sidebar></sidebar>
     </div>
 

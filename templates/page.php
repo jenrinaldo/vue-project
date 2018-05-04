@@ -6,7 +6,9 @@
         <div class="row"> 
             <div class="col-lg-8">
                 <div v-if="post[0]">
-                    <h1>{{post[0].title.rendered}}</h1>
+                <div class="rvads">
+                    <h1><span>{{post[0].title.rendered}}</span></h1>
+                </div>    
                     <div class="content" v-html="post[0].content.rendered"></div>
                 </div>  
                 <div v-else>

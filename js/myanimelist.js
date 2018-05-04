@@ -11,8 +11,8 @@ jQuery("#jensan-myanimelist-api-generate").on("click", function(){
 			jQuery("#content.wp-editor-area").val(data["synopsis"]);
 			jQuery("input[name=\"post_title\"]#title").val(data["title"]);
 			jQuery.each(data, function(key, value){
-				if(jQuery("#jensan-" + key).length > 0){
-					jQuery("#jensan-" + key).val(value);
+				if(jQuery("#jensan_" + key).length > 0){
+					jQuery("#jensan_" + key).val(value);
 				}else if(jQuery("#new-tag-" + key).length > 0){
 					jQuery("#new-tag-" + key).val(value);
 				}
