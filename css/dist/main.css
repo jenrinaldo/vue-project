@@ -444,6 +444,14 @@ input[type="radio"] {
   border-radius: 3px;
   min-height: 30px;
 }
+.bg-big { 
+  height: 300px;
+  overflow: hidden;
+  background-repeat:no-repeat;
+  background-size: cover;
+  position: relative;
+  background-position:50% 5%;
+}
 
 .dbtab h1 {
   color: #fff;
@@ -459,7 +467,6 @@ input[type="radio"] {
 }
 
 #alt-title {
-  display: none;
   margin-bottom: 0.25rem;
   font-size: 0.75rem;
   font-weight: 400;

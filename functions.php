@@ -1,5 +1,6 @@
 <?php 
 require_once ('templates/costum_func.php');
+require_once ('templates/curl_gd.php');
 /**
  * THIS IS TO UPDATE THE POST / PAGE PREVIEW
  * USES THE COMPONENT "PREVIEW"
@@ -86,12 +87,16 @@ function prepare_rest($data,$post,$request){
 
   
   //Categories
-  $tipes = get_the_terms($post->ID,'tipe');
-  $genres = get_the_terms($post->ID,'genre');
-  $seri = get_the_terms($post->ID,'series');
-  $_data['tipes'] = $tipes;
-  $_data['genres'] = $genres;
-  $_data['seri'] = $seri;
+  $tipe = get_the_terms($post->ID,'tipe');
+  $genre = get_the_terms($post->ID,'genre');
+  $series = get_the_terms($post->ID,'series');
+  $season = get_the_terms($post->ID,'season');
+  $producer = get_the_terms($post->ID,'producer');
+  $_data['tipe'] = $tipe;
+  $_data['genre'] = $genre;
+  $_data['series'] = $series;
+  $_data['season'] = $season;
+  $_data['producer'] = $producer;
 
 
 

@@ -7,7 +7,6 @@ Vue.component('the-loop',{
     props: ['posts', 'pagers']   
 });
 
-
 Vue.component('sidebar',{
     template : "#sidebar",
     data : function(){
@@ -197,7 +196,20 @@ const Home = Vue.component('home', {
 
 const Single = Vue.component('single', {
     template: '#single', 
-    props: ['post','comments','sidebar']   
+    props: ['post','comments','sidebar'],
+    data: function() {
+        return  {
+            isOpen: false,
+            isShowing:false,
+        }
+   },
+    methods:{
+        toggle: function(){
+            this.isOpen = !this.isOpen,
+            this.isShowing = !this.isShowing
+        }
+    }
+       
 });
 
 const Page = Vue.component('page', {
@@ -262,7 +274,8 @@ const app = new Vue({
         "pagers" : [] ,
         "genre" : {},
         "tipe" : {},
-        "season" : {} 
+        "season" : {},
+        "series" : {} 
     }, 
     created : function(){     
         this.getBloginfo();   

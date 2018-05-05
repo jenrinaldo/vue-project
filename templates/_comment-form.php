@@ -1,6 +1,7 @@
 <template id="comment-form">
-    <div class="comment-form-wrap" v-cloak>
-        <h3>Leave a comment</h3>
+<div class='disqusmen'>
+    <div class="comment-form" v-cloak>
+        <h3 id='comments'> Leave a Reply </h3>
 
 
         <div v-if="submitted" class="alert alert-success" role="alert">
@@ -40,5 +41,6 @@
                 <a type="submit" href="#" v-on:click.stop.prevent="submit" class="btn btn-lg btn-success">Submit</a>
             </div>
         </div>
+    </div>
     </div>
 </template>

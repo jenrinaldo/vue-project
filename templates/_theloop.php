@@ -7,7 +7,8 @@
         <router-link v-bind:to="{ name: 'post', params: { slug: post.slug }}">
         <div class="grid-thumbz">
             <div class="darken"></div>
-            <img :src="post._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url">
+            <img v-if="post._embedded['wp:featuredmedia'][0].source_url " :src="post._embedded['wp:featuredmedia'][0].source_url">
+            <div v-else><img :src="'http://127.0.0.1/wp-content/uploads/2018/04/bg-footer.png'"></div>
             <svg viewBox="0 0 24 24"><path d="M8,5.14V19.14L19,12.14L8,5.14Z"></path></svg>
         </div>
         </router>
@@ -24,14 +25,14 @@
 	    		
           <?php comments_number( __( '0', 'blank' ), __( '1', 'blank' ), __( '%', 'blank' ), 'comments-link', __('-', 'blank')); ?></li>
             <li class="category" ><span class="fas fa-tags"></span> Category : 
-              <router-link v-for="(cat, index) in post.genres" v-bind:to="{name:'genre', params: { genre: cat.slug, name: cat.name }}">{{cat.name}}<span v-if="index < post.genres.length - 1">,&nbsp;</span></router-link>
+              <router-link v-for="(cat, index) in post.genre" v-bind:to="{name:'genre', params: { genre: cat.slug, name: cat.name }}">{{cat.name}}<span v-if="index < post.genre.length - 1">,&nbsp;</span></router-link>
             </li>
 		    <li class="status" >
 				    <span class="fas fa-info-circle"></span> Status : {{post.meta_box.jensan_status}}	
 		    </li>
-		    <li class="series" v-if="post.seri">
+		    <li class="series" v-if="post.series">
 				    <span class="fas fa-th-list"></span> Series : 	 
-            <router-link v-for="(cat, index) in post.seri" v-bind:to="{name:'series', params: { series: cat.slug, name: cat.name }}">{{cat.name}}<span v-if="index < post.seri.length - 1">,&nbsp;</span></router-link>
+            <router-link v-for="(cat, index) in post.series" v-bind:to="{name:'series', params: { series: cat.slug, name: cat.name }}">{{cat.name}}<span v-if="index < post.series.length - 1">,&nbsp;</span></router-link>
 		    </li>
         <li class="statusBD" v-if="post.meta_box.jensan_bd == 1"><span>BD</span></li>
         </ul>
