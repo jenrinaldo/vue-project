@@ -7,6 +7,7 @@ Vue.component('the-loop',{
     props: ['posts', 'pagers']   
 });
 
+
 Vue.component('sidebar',{
     template : "#sidebar",
     data : function(){
@@ -18,21 +19,21 @@ Vue.component('sidebar',{
     }, 
     mounted : function(){    
         var _this = this;    
-        axios.get('/wp-json/wp/v2/genre')
+        axios.get('/wp-json/wp/v2/genre/?per_page=100')
             .then(function (response) {     
                 _this.genre = response.data;
             })
             .catch(function (error) {
                 console.log(error);
             });
-            axios.get('/wp-json/wp/v2/tipe')
+            axios.get('/wp-json/wp/v2/tipe/?per_page=100')
             .then(function (response) {     
                 _this.tipe = response.data;
             })
             .catch(function (error) {
                 console.log(error);
             });
-            axios.get('/wp-json/wp/v2/season')
+            axios.get('/wp-json/wp/v2/season/?per_page=100')
             .then(function (response) {     
                 _this.season = response.data;
             })
@@ -54,21 +55,21 @@ Vue.component('footer-component',{
     }, 
     mounted : function(){    
         var _this = this;    
-        axios.get('/wp-json/wp/v2/posts/?tipes=movie&filter[date_query][column]=post_date_gmt')
+        axios.get('/wp-json/wp/v2/posts/?filter[tipe]=movie&filter[date_query][column]=post_date_gmt&per_page=6')
             .then(function (response) {     
                 _this.movie = response.data;
             })
             .catch(function (error) {
                 console.log(error);
             });
-            axios.get('/wp-json/wp/v2/posts/?tipes=tv&filter[date_query][column]=post_date_gmt')
+            axios.get('/wp-json/wp/v2/posts/?filter[tipe]=tv&filter[date_query][column]=post_date_gmt&per_page=6')
             .then(function (response) {     
                 _this.tv = response.data;
             })
             .catch(function (error) {
                 console.log(error);
             });
-            axios.get('/wp-json/wp/v2/posts/?tipes=ova&filter[date_query][column]=post_date_gmt')
+            axios.get('/wp-json/wp/v2/posts/?filter[tipe]=ova&filter[date_query][column]=post_date_gmt&per_page=6')
             .then(function (response) {     
                 _this.ova = response.data;
             })
@@ -114,16 +115,14 @@ Vue.component('search-form',{
         }
     },
     data: function () {
-        var searchTerm = this.$route.query.term 
-                ? this.$route.query.term : ""; 
+        var searchTerm = this.$route.query.term ? this.$route.query.term : ""; 
         return {
             searchTerm : searchTerm          
         };
     }, 
     watch : {
         '$route' : function (to, from) {    
-            var searchTerm = to.query.term 
-                ? to.query.term : ""; 
+            var searchTerm = to.query.term ? to.query.term : ""; 
             this.searchTerm = searchTerm;            
         }
     }
@@ -142,9 +141,7 @@ Vue.component('comment-form',{
             this.emailBlured = true;
             this.contentBlured = true;
 
-            if( this.commenter !== '' 
-                && this.validEmail(this.email)
-                && this.content !== ''){
+            if( this.commenter !== '' && this.validEmail(this.email) && this.content !== ''){
                 this.valid = true;
             }
         },
@@ -301,9 +298,7 @@ const app = new Vue({
         },
 
         updateData : function(){     
-            if(this.$route.name == "post" 
-                || this.$route.name == "page" 
-                || this.$route.name == "preview"){   
+            if(this.$route.name == "post" || this.$route.name == "page" || this.$route.name == "preview"){   
                 this.posts = [];    
                 this.pagers = [];          
                 this.fetchSinglePost();             
@@ -380,7 +375,7 @@ const app = new Vue({
 
             //LIMIT TO 3 IN HOME - TEMP ONLY!! Find a better way to do this:          
             if(_this.$route.path == '/'){
-                urlStr += '&per_page=3';
+                urlStr += '&per_page=6';
             }
 
             axios.get(urlStr)

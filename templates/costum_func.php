@@ -58,6 +58,11 @@ function jensan_meta_box( $meta_boxes ) {
 				'name' => esc_html__( 'Background Cover', 'jensan' ),
 			),
 			array(
+				'id' => $prefix . 'thcover',
+				'type' => 'url',
+				'name' => esc_html__( 'Thumbnail Cover', 'jensan' ),
+			),
+			array(
 				'id' => 'altjudul',
 				'type' => 'heading',
 				'name' => esc_html__( 'Alternative Titlte', 'jensan' ),

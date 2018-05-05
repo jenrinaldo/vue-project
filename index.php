@@ -92,8 +92,19 @@ if (is_home()) {
     <?php get_template_part('/templates/_nopost'); ?>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>        
-    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>    
-    <script src="<?php echo get_template_directory_uri(); ?>/js/main.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script> 
+    <script src="<?php echo get_template_directory_uri(); ?>/js/main.js"></script>   
+    <style>
+  .bg-big { background-image: url(<?php $cover = get_post_meta(get_the_ID(),"jensan-bgcover",true);echo $cover;?>); 
+    height: 300px;
+    overflow: hidden;
+    background-repeat:no-repeat;
+    background-size: cover;
+    position: relative;
+    background-position:50% 5%;
+  }
+  
+</style>
     <?php wp_footer(); ?>
     </body>
 </html>

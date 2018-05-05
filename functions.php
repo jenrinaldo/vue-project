@@ -113,6 +113,35 @@ function rest_api_filter_add_filters() {
 		add_filter( 'rest_' . $post_type->name . '_query', 'rest_api_filter_add_filter_param', 10, 2 );
 	}
 }
+add_filter('rest_query_vars', 'wpse225850_add_rest_query_vars');
+
+function wpse225850_add_rest_query_vars($query_vars) {
+
+    $query_vars = array_merge( $query_vars, array('meta_key', 'meta_value', 'meta_compare') );
+
+    return $query_vars;
+
+}
+
+add_action( 'rest_api_init', 'create_api_posts_meta_field' );
+
+function create_api_posts_meta_field() {
+
+ // register_rest_field ( 'name-of-post-type', 'name-of-field-to-return', array-of-callbacks-and-schema() )
+ register_rest_field( 'posts', 'metaval', array(
+ 'get_callback' => 'get_post_meta_for_api',
+ 'schema' => null,
+ )
+ );
+}
+
+function get_post_meta_for_api( $object ) {
+ //get the id of the post object array
+ $post_id = $object['id'];
+
+ //return the post meta
+ return get_post_meta( $post_id );
+}
 
 /**
  * Add the filter parameter

@@ -19,16 +19,17 @@
         </div>
         <div class="info">
           <ul>
-            <li><span class="fas fa-calendar-alt"></span> Date : 	<?php echo get_the_time('d F Y', $post->ID); ?></li>
+            <li><span class="fas fa-calendar-alt"></span> Date : 	{{ Date(post.date_gmt)}}</li>
             <li><span class="fas fa-comments"></span> Comment  : 	
-	    		<?php comments_number( __( '0', 'blank' ), __( '1', 'blank' ), __( '%', 'blank' ), 'comments-link', __('-', 'blank')); ?></li>
+	    		
+          <?php comments_number( __( '0', 'blank' ), __( '1', 'blank' ), __( '%', 'blank' ), 'comments-link', __('-', 'blank')); ?></li>
             <li class="category" ><span class="fas fa-tags"></span> Category : 
               <router-link v-for="(cat, index) in post.genres" v-bind:to="{name:'genre', params: { genre: cat.slug, name: cat.name }}">{{cat.name}}<span v-if="index < post.genres.length - 1">,&nbsp;</span></router-link>
             </li>
 		    <li class="status" >
 				    <span class="fas fa-info-circle"></span> Status : {{post.meta_box.jensan_status}}	
 		    </li>
-		    <li class="series">
+		    <li class="series" v-if="post.seri">
 				    <span class="fas fa-th-list"></span> Series : 	 
             <router-link v-for="(cat, index) in post.seri" v-bind:to="{name:'series', params: { series: cat.slug, name: cat.name }}">{{cat.name}}<span v-if="index < post.seri.length - 1">,&nbsp;</span></router-link>
 		    </li>

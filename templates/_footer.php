@@ -7,7 +7,7 @@
 				<span class="fas fa-question"></span> About 
 			</h5>
 			<p>
-				<?php echo bloginfo('name'); ?> - Sebuah 
+				<router-link to="/">{{this.$root.bloginfo.name}}</router-link> - Sebuah 
 				<b>Fanshare</b> tempat download anime gratis subtitle indonesia. Disini kami menyediakan anime dengan format mkv dan mp4. Ada banyak ukuran anime yang dishare disini, yaitu 480p, 720p, 360p, dan kadang kadang 240p.
 			</p>
 		</div>
@@ -45,11 +45,8 @@
     <div class="credit">
 	<div class="credit2">Copyright 
 		<span class="fas fa-copyright"></span>
-		<a href="
-			<?php echo home_url('/'); ?>">
-			<?php bloginfo('name'); ?>
-		</a> - Design Template By 
-		<?php bloginfo('name'); ?>
+		<router-link to="/">{{this.$root.bloginfo.name}}</router-link> - Design Template By 
+		<router-link to="/">{{this.$root.bloginfo.name}}</router-link>
 	</div>
 </div>
 </footer>
