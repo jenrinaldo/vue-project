@@ -5,6 +5,7 @@ require_once ('templates/curl_gd.php');
  * THIS IS TO UPDATE THE POST / PAGE PREVIEW
  * USES THE COMPONENT "PREVIEW"
 */
+add_theme_support( 'title-tag' );
 
 //change preview post links - to match wpvue route
 function new_preview_link() {

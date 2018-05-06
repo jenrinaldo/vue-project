@@ -409,7 +409,7 @@ const app = new Vue({
             }
             return true;
         }
-    }
+    },
 }).$mount('#app');
 
 // Now the app has started!
